@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="audioplayer" v-for="s in sounddata" :key="s.number">
+        <!-- <label for=""
+          >{{ s.number }} -->
+        <audio v-bind:data-num="s.number">
+          <source :src="s.url" type="audio/ogg" />
+        </audio>
+        <!-- </label> -->
+      </div>
+      <div class="center-box">
+        <h2>Vue-piano</h2>
+        <div class="keyboard">
+          <div class="pianokey" v-for="s in display_keys">
+            <div
+              @click="playnote(s.num,0.5)"
+              class="white"
+              :class="get_current_highlight(s.num)"
+              v-if='s.type=="white"'
+            ></div>
+            <div
+              @click="playnote(s.num,0.5)"
+              class="black"
+              v-if='s.type=="black"'
+            ></div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="controls">
+          <ul v-if="notes.length>0" class="notes_list">
+            <li
+              :class="now_note_id-1==id?'playing':''"
+              v-for="(note,id) in notes"
+            >
+              <div class="num">{{note.num}}</div>
+              <div class="time">{{note.time}}</div>
+            </li>
+          </ul>
+          <button v-if="playing_time>1" @click="playnext(1)">Playnext</button>
+          <button v-if="playing_time<=0" @click="startplay">Startplay</button>
+          <button v-if="playing_time>=1" @click="stopplay">Stopplay</button>
+
+          <h4>{{playing_time}}</h4>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
