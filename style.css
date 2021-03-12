@@ -30,7 +30,7 @@ body {
   transition: 0.1s;
 }
 .white.playing {
-  background-color: rgb(233, 228, 228);
+  background-color: rgb(190, 187, 187);
   transform: translate(0px, 0px);
 }
 
@@ -40,7 +40,7 @@ body {
 }
 .white:hover {
   transform: translate(0px, 0px);
-  background-color: rgb(212, 209, 209);
+  background-color: rgb(190, 187, 187);
 }
 .black {
   position: absolute;
