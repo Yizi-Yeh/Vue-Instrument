@@ -28,12 +28,12 @@ body {
   border: solid 1px rgb(233, 228, 228);
   transform: translate(-3px, -3px);
   transition: 0.1s;
-  z-index: -1px;
 }
 .white.playing {
   background-color: rgb(233, 228, 228);
   transform: translate(0px, 0px);
 }
+
 .black.playing {
   background-color: rgb(100, 98, 98);
   transform: translate(0px, 0px);
@@ -51,7 +51,7 @@ body {
   background-color: black;
   margin-left: -11px;
   margin-right: -11px;
-  z-index: 999px;
+  z-index: 20;
   transform: translate(-3px, -3px);
 }
 .black:hover {

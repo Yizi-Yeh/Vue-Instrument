@@ -15,6 +15,7 @@ const vm = new Vue({
     now_note_id:0,
     next_note_id:0,
     playing_time:0,
+    now_press_key:-1,
     player:null,
     display_keys:[
         {num: 1,key: 90  ,type:'white'},
@@ -82,7 +83,10 @@ const vm = new Vue({
             this.playing_time = 0;
             this.next_note_id = 0
         },
-        get_current_highlight: function(id){
+        get_current_highlight: function(id,skey){
+            if(this.now_press_key==skey){
+                return true
+            }
             if(this.notes.length===0){
                 return false
                
@@ -105,9 +109,16 @@ const vm = new Vue({
  
 $(window).keydown(function(e){
     const key = e.which
+
+    vm.now_press_key = key
+    
     for (let i = 0;i<=vm.display_keys.length;i++){
         if(key===vm.display_keys[i].key){
             vm.playnote(vm.display_keys[i].num,0.3)
         }
     }
 }) 
+
+$(window).keyup(function(){
+    vm.now_press_key = -1
+})

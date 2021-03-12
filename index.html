@@ -25,10 +25,11 @@
             <div
               @click="playnote(s.num,0.5)"
               class="white"
-              :class="get_current_highlight(s.num)"
+              :class='get_current_highlight(s.num,s.key)?"playing":""'
               v-if='s.type=="white"'
             ></div>
             <div
+              :class='get_current_highlight(s.num,s.key)?"playing":""'
               @click="playnote(s.num,0.5)"
               class="black"
               v-if='s.type=="black"'
